@@ -154,10 +154,12 @@ flowchart TD
     B -->|Аугментированный текст| A
     B -->|Аугментированный текст| C
 ```
+
     
 ### **5.2. Component Diagram.**
 
 ```mermaid
+%% Component Diagram
 graph TD
     A["ruaugment"] --> B["base.py<br>BaseAugmentor"]
     A --> C["pipeline.py<br>AugmentationPipeline"]
@@ -166,6 +168,7 @@ graph TD
     A --> F["synonym.py<br>SynonymAugmentor"]
     A --> G["morph.py<br>MorphAugmentor"]
 ```
+
 
 ### **5.3. Логика пайплайна.**
 
@@ -186,6 +189,7 @@ sequenceDiagram
     A3-->>P: text'''
     P-->>U: augmented text
 ```
+
 
  ---
  
@@ -223,7 +227,7 @@ sequenceDiagram
 - качество аугментаций.
 
 ### **7.3. Набор тестовых текстов:**
-- банковская тематика,
+- банковский домен (тексты, запросы, документы),
 - короткие пользовательские запросы.
 
 ---
