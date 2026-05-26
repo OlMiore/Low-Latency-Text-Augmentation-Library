@@ -364,10 +364,10 @@ sequenceDiagram
 > ## Структура репозитория.
 
 ```
-ru-online-augment/
+Low-Latency-Text-Augmentation-Library/
   README.md
   design/
-    ML_Design_Document.md
+    ML_System_Design_Doc.md
   src/
     ruaugment/
       base.py
@@ -380,6 +380,7 @@ ru-online-augment/
     benchmark_basic.py
   examples/
     simple_pipeline.py
+
 ```
 
 ---
