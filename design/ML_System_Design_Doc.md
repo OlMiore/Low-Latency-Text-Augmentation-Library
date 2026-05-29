@@ -364,9 +364,6 @@ sequenceDiagram
 > ## Структура репозитория.
 
 ```
-> ## Структура репозитория.
-
-```
 Low-Latency-Text-Augmentation-Library/
   README.md
   design/
