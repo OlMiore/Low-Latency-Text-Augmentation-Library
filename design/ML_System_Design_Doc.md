@@ -364,23 +364,28 @@ sequenceDiagram
 > ## Структура репозитория.
 
 ```
+> ## Структура репозитория.
+
+```
 Low-Latency-Text-Augmentation-Library/
   README.md
   design/
     ML_System_Design_Doc.md
   src/
     ruaugment/
+      README.md
       base.py
-      pipeline.py
       char.py
-      word.py
-      synonym.py
+      deletion.py
       morph.py
+      pipeline.py
+      swap.py
+      synonym.py
+      validator.py
   benchmarks/
     benchmark_basic.py
   examples/
     simple_pipeline.py
-
 ```
 
 ---
