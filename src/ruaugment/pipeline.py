@@ -1,3 +1,4 @@
+import time
 from .validator import ConfigValidator
 
 class Pipeline:
@@ -6,6 +7,7 @@ class Pipeline:
         ConfigValidator().validate(augmentors)
 
     def __call__(self, text: str) -> str:
+        start = time.time()
         print("=== Запуск пайплайна ===")
         print("Исходный текст:", text)
 
@@ -14,5 +16,6 @@ class Pipeline:
             text = aug(text)
             print("   ", text)
 
-        print("=== Пайплайн завершён ===")
+        latency = (time.time() - start) * 1000
+        print(f"=== Пайплайн завершён за {latency:.2f} ms ===")
         return text
