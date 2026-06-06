@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 import time
+=======
+# pipeline.py
+>>>>>>> 7952769343f788334f394c9dbaeb962b5f7c9fca
 from .validator import ConfigValidator
 
 class Pipeline:
@@ -16,6 +20,11 @@ class Pipeline:
             text = aug(text)
             print("   ", text)
 
+<<<<<<< HEAD
         latency = (time.time() - start) * 1000
         print(f"=== Пайплайн завершён за {latency:.2f} ms ===")
         return text
+=======
+        print("=== Пайплайн завершён ===")
+        return text
+>>>>>>> 7952769343f788334f394c9dbaeb962b5f7c9fca

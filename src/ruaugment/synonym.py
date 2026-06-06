@@ -15,4 +15,8 @@ class SynonymAugmentor(AugmentorBase):
                 new_words.append(random.choice(SYN_DICT[w.lower()]))
             else:
                 new_words.append(w)
+<<<<<<< HEAD
         return " ".join(new_words)
+=======
+        return " ".join(new_words)
+>>>>>>> 7952769343f788334f394c9dbaeb962b5f7c9fca
