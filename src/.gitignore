@@ -1,0 +1,23 @@
+# Python cache
+__pycache__/
+*.pyc
+
+# VS Code
+.vscode/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Merge conflict backups
+*.orig
+*.BACKUP*
+*.BASE*
+*.LOCAL*
+*.REMOTE*
+*.md~*
+*~HEAD
+*~origin*
+
+# System files
+.DS_Store
+Thumbs.db
