@@ -374,9 +374,6 @@ Low-Latency-Text-Augmentation-Library/
     benchmark_basic.py
   examples/
     simple_pipeline.py
-<<<<<<< HEAD
-
-=======
     benchmark_experiment.py
   src/
     ruaugment/
@@ -390,7 +387,6 @@ Low-Latency-Text-Augmentation-Library/
       swap.py
       synonym.py
       validator.py
->>>>>>> a973193aa549374e8dac1fca76988be0debf1d72
 ```
 
 ---
