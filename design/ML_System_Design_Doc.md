@@ -375,6 +375,7 @@ Low-Latency-Text-Augmentation-Library/
   examples/
     simple_pipeline.py
     benchmark_experiment.py
+    benchmark_full_metrics.py
   src/
     ruaugment/
       README.md
