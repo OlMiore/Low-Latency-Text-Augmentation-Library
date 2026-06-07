@@ -12,8 +12,4 @@ class CharNoiseAugmentor(AugmentorBase):
                 new_chars.append(chr(ord(ch) + 1))
             else:
                 new_chars.append(ch)
-<<<<<<< HEAD
         return "".join(new_chars)
-=======
-        return "".join(new_chars)
->>>>>>> 7952769343f788334f394c9dbaeb962b5f7c9fca
