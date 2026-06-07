@@ -366,24 +366,27 @@ sequenceDiagram
 ```
 Low-Latency-Text-Augmentation-Library/
   README.md
+  .gitignore
+  metrics.csv
   design/
     ML_System_Design_Doc.md
-  src/
-    ruaugment/
-      base.py
-      pipeline.py
-      char.py
-      word.py
-      synonym.py
-      morph.py
   benchmarks/
     benchmark_basic.py
   examples/
     simple_pipeline.py
-<<<<<<< HEAD
-
-=======
->>>>>>> 7952769343f788334f394c9dbaeb962b5f7c9fca
+    benchmark_experiment.py
+  src/
+    ruaugment/
+      README.md
+      __init__.py
+      base.py
+      char.py
+      deletion.py
+      morph.py
+      pipeline.py
+      swap.py
+      synonym.py
+      validator.py
 ```
 
 ---
