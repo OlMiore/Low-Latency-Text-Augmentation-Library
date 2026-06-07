@@ -1,0 +1,5 @@
+batch_size,samples,throughput_samples_per_sec
+8,1024,248.15
+16,1024,264.44
+32,1024,278.32
+64,1024,279.66
