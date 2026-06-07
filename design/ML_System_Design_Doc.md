@@ -168,12 +168,13 @@
 
 ```mermaid
 flowchart TD
-    A["Train Loop / DataLoader"] -->|Батч текстов| B["Библиотека аугментаций<br>ru-online-augment"]
+    A["Train Loop / DataLoader"]
+        -->|Батч текстов| B["Библиотека аугментаций<br>ru-online-augment"]
     B -->|Аугментированный батч| C["ML‑модель (Transformer)"]
     C -->|Градиенты / обновление весов| A
 ```
 
-*Примечание.* Диаграмма отражает поток данных внутри обучающего контура и показывает, что библиотека используется исключительно в train‑loop.
+*Примечание.* Диаграмма отражает поток данных внутри обучающего контура и показывает, что библиотека вызывается из train‑loop и возвращает аугментированные данные.
 
 **Акторы:**
  - Train Loop / DataLoader,
@@ -263,17 +264,25 @@ sequenceDiagram
     participant TL as Train Loop
     participant V as ConfigValidator
     participant P as Pipeline
-    participant A1 as SynonymAugmentor
-    participant A2 as CharNoiseAugmentor
+    participant SY as SynonymAugmentor
+    participant CH as CharNoiseAugmentor
+    participant DL as DeletionAugmentor
+    participant SW as SwapAugmentor
+    participant MO as MorphAugmentor
 
     TL->>V: запрос на выполнение пайплайна
     V-->>TL: OK (последовательность безопасна)
-
     TL->>P: batch_texts
-    P->>A1: apply (synonym)
-    A1-->>P: text'
-    P->>A2: apply (char-noise)
-    A2-->>P: text''
+    P->>SY: apply(synonym)
+    SY-->>P: text'
+    P->>CH: apply(char-noise)
+    CH-->>P: text''
+    P->>DL: apply(deletion)
+    DL-->>P: text'''
+    P->>SW: apply(swap)
+    SW-->>P: text''''
+    P->>MO: apply(morph)
+    MO-->>P: text_final
     P-->>TL: augmented_batch
 ```
 
@@ -368,6 +377,8 @@ Low-Latency-Text-Augmentation-Library/
   README.md
   .gitignore
   metrics.csv
+  metrics_latency.csv
+  metrics_throughput.csv
   design/
     ML_System_Design_Doc.md
   benchmarks/
