@@ -222,6 +222,8 @@ prob_layout   = layout / total_chars
 
 <img width="959" height="566" alt="Image" src="https://github.com/user-attachments/assets/70b79f94-ab1a-4888-b59a-4030a1b7160b" />
 
+### Разбор вывода. Исходный текст: "кредит и деньги важны":
+
 *prob = 0.1 (мягкий шум)*:
 
  → кредит и деньги важны
