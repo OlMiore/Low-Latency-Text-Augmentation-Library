@@ -25,6 +25,8 @@ RUS_NEIGHBORS = {
 
 
 class CharNoiseAugmentor(AugmentorBase):
+    order = 30
+    name = "CharNoise"
     def __init__(self, mode: str = "mild"):
         if mode not in ("mild", "medium", "chaos"):
             raise ValueError("mode must be 'mild', 'medium' or 'chaos'")
