@@ -459,6 +459,9 @@ from ruaugment.char import CharNoiseAugmentor
 aug = CharNoiseAugmentor(mode="medium")
 print(aug("Кредит и деньги были важны для клиента"))
 
+Интеграция в Pipeline:
+CharNoiseAugmentor имеет приоритет order = 30, поэтому в общем Pipeline применяется после семантических и морфологических аугментаций, что соответствует логике: сначала смысл, потом шум.
+
 <img width="959" height="565" alt="Image" src="https://github.com/user-attachments/assets/6cd01fe3-f4fd-4c5a-b253-fa08eaf179ad" />
 
 ### CharNoisePipeline.
