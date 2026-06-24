@@ -510,3 +510,119 @@ python -m src.ruaugment.test_pipeline_manual
 Пример работы общего пайплайна Тest_pipeline_manual.
 
 <img width="959" height="562" alt="Image" src="https://github.com/user-attachments/assets/7ddef1d9-6387-4e69-9071-d7458d7df22b" />
+
+### Что доработано 24.06.26.
+
+Детерминизм: единый механизм set_seed() для воспроизводимых результатов.
+
+ConfigValidator: проверяет порядок и совместимость аугментаторов.
+
+Batch‑mode: поддержка пакетной обработки для измерения throughput.
+
+Benchmark suite: метрики latency и throughput с репрезентативными текстами.
+
+Реалистичные тесты: ручные тесты для каждого аугментатора и пайплайна.
+
+### Architecture.
+
+| Модуль | Назначение |
+| --- | --- |
+| **base.py** | Базовый класс ``AugmentorBase`` и функция ``set_seed()`` |
+| **synonym.py** | Синонимическая замена слов |
+| **morph.py** | Морфологические преобразования |
+| **char.py** | Символьный шум |
+| **swap.py** | Перестановка соседних токенов с вероятностью ``prob`` |
+| **deletion.py** | Случайное удаление токенов |
+| **pipeline.py** | Комбинация аугментаторов в последовательный пайплайн |
+| **validator.py** | Проверка порядка и совместимости аугментаторов |
+| **benchmarks/** | Скрипты для измерения производительности |
+
+### Validation Example.
+
+from ruaugment import SynonymAugmentor, MorphAugmentor, CharNoiseAugmentor, RandomDeletionAugmentor
+from ruaugment.validator import ConfigValidator
+
+augms = [
+    SynonymAugmentor(prob=0.5),
+    MorphAugmentor(prob=0.5),
+    CharNoiseAugmentor(mode="medium"),
+    RandomDeletionAugmentor(prob=0.1),
+]
+
+ConfigValidator.validate(augms)
+
+✅ Корректный пайплайн проходит валидацию
+❌ Ошибочный порядок вызывает ValueError.
+
+### Benchmark Results.
+
+Запуск:
+
+python -m examples.test_benchmark_manual
+
+#### Latency (ms).
+
+| Scenario | p50 | p95 | p99 |
+| --- | --- | --- | --- |
+| short | 0.70 | 1.68 | 2.02 |
+| medium | 1.69 | 3.03 | 3.53 |
+| long | 19.87 | 27.16 | 33.88 |
+
+#### Throughput (samples/sec).
+
+| Batch size | Throughput |
+| --- | --- |
+| 8 | 1317 |
+| 16 | 1316 |
+| 32 | 1324 |
+| 64 | 1272 |
+
+Метрики сохраняются в metrics_latency.csv и metrics_throughput.csv.
+
+### Improvements Implemented.
+
+ - Переведено на time.perf_counter() для точных измерений.
+
+ - Устранён двойной подсчёт latency.
+
+ - Добавлен batch‑mode в throughput‑тестах.
+
+ - Репрезентативные тексты вместо генерации "кредит кредит кредит".
+
+ - Корректные перцентили p50/p95/p99.
+
+ - Все тесты выполняются в .venv с установленными зависимостями (numpy, pymorphy3, dawg2-python).
+
+### Installation.
+
+git clone https://github.com/<your-repo>/Low-Latency-Text-Augmentation-Library.git
+cd Low-Latency-Text-Augmentation-Library
+python -m venv .venv
+source .venv/Scripts/activate
+pip install -r src/ruaugment/requirements.txt
+
+### Example Pipeline.
+
+from ruaugment import Pipeline, SynonymAugmentor, MorphAugmentor, CharNoiseAugmentor
+
+pipeline = Pipeline([
+    SynonymAugmentor(prob=0.5),
+    MorphAugmentor(prob=0.5),
+    CharNoiseAugmentor(mode="medium"),
+])
+
+text = "Банк одобрил кредит клиенту после проверки документов."
+augmented = pipeline(text)
+print(augmented)
+
+Пример фиксации зависимостей:
+
+<img width="959" height="565" alt="Image" src="https://github.com/user-attachments/assets/04b970fa-f9eb-4214-b860-eb9b8a1a8a95" />
+
+Пример работы ConfigValidator_new_version:
+
+<img width="959" height="565" alt="Image" src="https://github.com/user-attachments/assets/81bd9831-689c-4c14-9db4-98fb58096b32" />
+
+Пример работы Benchmark_full_metrics_new_version:
+
+<img width="959" height="563" alt="Image" src="https://github.com/user-attachments/assets/ab4a5030-e6ab-4f88-a6d8-2ad75648b820" />
