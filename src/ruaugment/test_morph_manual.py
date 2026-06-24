@@ -1,4 +1,8 @@
+from .base import set_seed
 from .morph import MorphAugmentor
+
+# Устанавливаем сид для детерминизма
+set_seed(42)
 
 text = "Кредит и деньги были важны для клиента в новом проекте"
 

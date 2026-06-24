@@ -1,4 +1,8 @@
+from .base import set_seed
 from .deletion import RandomDeletionAugmentor
+
+# Устанавливаем сид для детерминизма
+set_seed(42)
 
 text = "кредит и деньги важны"
 

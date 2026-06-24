@@ -1,4 +1,4 @@
-scenario,length_tokens,p50_ms,p95_ms,p99_ms
-short_20_50,30,3.0,10.12,16.6
-medium_100_200,150,5.69,10.38,13.28
-long_300_500,400,8.71,13.35,26.04
+scenario,p50_ms,p95_ms,p99_ms
+short,0.7,1.68,2.02
+medium,1.69,3.03,3.53
+long,19.87,27.16,33.88

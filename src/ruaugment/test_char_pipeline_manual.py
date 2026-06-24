@@ -1,5 +1,9 @@
 import logging
+from .base import set_seed
 from .char_pipeline import CharNoisePipeline
+
+# Устанавливаем сид для детерминизма
+set_seed(42)
 
 logging.basicConfig(level=logging.DEBUG)
 

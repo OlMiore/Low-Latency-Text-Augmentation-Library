@@ -1,3 +1,6 @@
+from .base import set_seed
+set_seed(42)
+
 from .char import CharNoiseAugmentor
 
 text = "кредит и деньги важны"

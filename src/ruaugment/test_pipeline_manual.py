@@ -1,10 +1,13 @@
 import logging
-
+from .base import set_seed
 from .pipeline import Pipeline
 from .synonym import SynonymAugmentor
 from .morph import MorphAugmentor
 from .char import CharNoiseAugmentor
 from .deletion import RandomDeletionAugmentor
+
+# Устанавливаем сид для детерминизма
+set_seed(42)
 
 logging.basicConfig(level=logging.DEBUG)
 

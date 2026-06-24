@@ -1,4 +1,8 @@
+from .base import set_seed
 from .synonym import SynonymAugmentor
+
+# Устанавливаем сид для детерминизма
+set_seed(42)
 
 text = "Кредит и деньги — важный ресурс"
 
