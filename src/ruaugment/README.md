@@ -472,3 +472,41 @@ from ruaugment.char_pipeline import CharNoisePipeline
 pipe = CharNoisePipeline(mode="chaos")
 print(pipe("Кредит и деньги были важны для клиента")).
 
+### Тесты Pipeline.
+
+#### 1. Тест CharNoisePipeline.
+
+Файл: test_char_pipeline_manual.py  
+Назначение: демонстрация работы шумовых режимов (mild, medium, chaos).
+
+Запуск:
+
+python -m src.ruaugment.test_char_pipeline_manual
+
+Тест показывает:
+ - работу CharNoiseAugmentor в трёх режимах;
+ - корректность логирования;
+ - реалистичность ошибок ввода.
+
+Пример работы Test_char_pipeline_manual.
+
+<img width="959" height="563" alt="Image" src="https://github.com/user-attachments/assets/80b4eef5-8e66-4535-9fd2-3fbfeb86dba4" />
+
+#### 2. Тест общего Pipeline.
+
+Файл: test_pipeline_manual.py  
+Назначение: проверка интеграции всех аугментаторов: SynonymAugmentor, MorphAugmentor, CharNoiseAugmentor, RandomDeletionAugmentor.
+
+Запуск:
+
+python -m src.ruaugment.test_pipeline_manual
+
+Тест проверяет:
+ - порядок аугментаторов (сортировка по order);
+ - работу batch‑режима;
+ - логирование через logging;
+ - корректность универсального интерфейса __call__.
+
+Пример работы общего пайплайна Тest_pipeline_manual.
+
+<img width="959" height="562" alt="Image" src="https://github.com/user-attachments/assets/7ddef1d9-6387-4e69-9071-d7458d7df22b" />
